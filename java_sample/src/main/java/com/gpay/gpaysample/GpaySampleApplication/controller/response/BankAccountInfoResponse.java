@@ -1,0 +1,21 @@
+package com.gpay.gpaysample.GpaySampleApplication.controller.response;
+
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
+public class BankAccountInfoResponse {
+    private String fullName;
+    private String orderId;
+    private String status;
+
+    private String signature;
+}
