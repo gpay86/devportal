@@ -1,0 +1,18 @@
+{
+  "env": "dev",
+  "port": ":8080",
+  "services": {
+    "gpay_open_api": "https://openapi.dev.g-pay.vn"
+    
+  },
+  "redis" : {
+    "address":"localhost:6379",
+    "password" :"123456789",
+    "db": 3
+  },
+  "login_information": {
+    "client_id": "",
+    "client_secret": "",
+    "merchant_code": ""
+  }
+}
