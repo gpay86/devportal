@@ -2,7 +2,7 @@
   "env": "dev",
   "port": ":8080",
   "services": {
-    "gpay_open_api": "https://openapi.dev.g-pay.vn"
+    "gpay_open_api": "https://openapi.sandbox.g-pay.vn"
     
   },
   "redis" : {
