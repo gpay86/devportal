@@ -17,9 +17,10 @@ GpayWebhookController.java	=> Nhận kết quả giao dịch VA, cổng.
 ```
 openssl genrsa -out mykey.pem 2048
 
-openssl req -new -x509 -key mykey.pem -out publickey.cer -days 3650
+openssl req -new -x509 -key mykey.pem -out publickey.pem -days 3650
 
 ```
 Dùng  **private_key.pem** để tạo chữ ký. Và gửi **publickey.pem** cho Gpay
 
 *(Use **private_key.pem** to generate a signature. And send **publickey.pem** to Gpay.)*
+
