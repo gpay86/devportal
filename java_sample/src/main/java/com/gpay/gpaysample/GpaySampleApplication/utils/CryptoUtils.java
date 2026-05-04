@@ -1,19 +1,21 @@
 package com.gpay.gpaysample.GpaySampleApplication.utils;
 
+import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.security.KeyFactory;
 import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.security.Signature;
+import java.security.cert.CertificateFactory;
+import java.security.cert.X509Certificate;
 import java.security.interfaces.RSAPublicKey;
 import java.security.spec.PKCS8EncodedKeySpec;
-import java.security.spec.X509EncodedKeySpec;
 import java.util.Base64;
 
 public class CryptoUtils {
@@ -64,9 +66,8 @@ public class CryptoUtils {
     }
 
     public static PublicKey getPemPublicKey(String filename) throws Exception {
-         try {
-            String filePath = new ClassPathResource(filename).getFile().getAbsolutePath();
-            Path pathCer = Paths.get(filePath);
+        try {
+            Path pathCer = Paths.get(filename);
             byte[] bytes = Files.readAllBytes(pathCer);
             ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(bytes);
 
