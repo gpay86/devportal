@@ -64,16 +64,20 @@ public class CryptoUtils {
     }
 
     public static PublicKey getPemPublicKey(String filename) throws Exception {
-        String pemContent = new String(Files.readAllBytes(Paths.get(filename)), StandardCharsets.UTF_8);
-        String publicKeyPEM = pemContent
-                .replace("-----BEGIN PUBLIC KEY-----", "")
-                .replace("-----END PUBLIC KEY-----", "")
-                .replace("\n", "").replace("\r", "");
+         try {
+            String filePath = new ClassPathResource(filename).getFile().getAbsolutePath();
+            Path pathCer = Paths.get(filePath);
+            byte[] bytes = Files.readAllBytes(pathCer);
+            ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(bytes);
 
-        byte[] publicKeyBytes = Base64.getDecoder().decode(publicKeyPEM);
-        X509EncodedKeySpec keySpec = new X509EncodedKeySpec(publicKeyBytes);
-        KeyFactory keyFactory = KeyFactory.getInstance("RSA");
-        return keyFactory.generatePublic(keySpec);
+            CertificateFactory fact = CertificateFactory.getInstance("X.509");
+            X509Certificate cer = (X509Certificate) fact.generateCertificate(byteArrayInputStream);
+            return cer.getPublicKey();
+
+        } catch (Exception var5) {
+            var5.printStackTrace();
+        }
+        return null;
     }
 
 
